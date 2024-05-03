@@ -32,7 +32,7 @@
 					<div class="card">
 						<div class="card-header">게시물 쓰기</div>
 						<div class="card-body">
-							<form id="writeBoardForm" method="post" action="writeBoard">
+							<form id="writeBoardForm" method="post" action="writeBoard" enctype="multipart/form-data">
 								<div class="input-group">
 									<div class="input-group-prepend">
 										<span class="input-group-text">btitle</span>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 
 <!DOCTYPE html>
 <html>
@@ -13,7 +14,6 @@
 
 <!-- 사용자 정의 JavaScript -->
 <script type="text/javascript">
-	
 </script>
 </head>
 
@@ -28,9 +28,19 @@
 				</div>
 				<div class="col-md-8">
 					<div class="card">
-						<div class="card-header">권한 불충분</div>
+						<div class="card-header">권한별 메뉴 보기</div>
 						<div class="card-body">
-							현재 사용자는 권한이 없어 입구컷입니다.
+							<ul>
+								<sec:authorize access="hasRole('ROLE_ADMIN')">
+								<li><a href="${pageContext.request.contextPath}/ch17/admin/page">ADMIN 페이지</a></li>
+								</sec:authorize>
+								<sec:authorize access="hasRole('ROLE_MANAGER')">
+								<li><a href="${pageContext.request.contextPath}/ch17/manager/page">MANAGER 페이지</a></li>
+								</sec:authorize>
+								<sec:authorize access="hasRole('ROLE_USER')">
+								<li><a href="${pageContext.request.contextPath}/ch17/user/page">USER 페이지(로그인 체크)</a></li>
+								</sec:authorize>
+							</ul>
 						</div>
 					</div>
 				</div>
